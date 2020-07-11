@@ -1,0 +1,11 @@
+.ArrayBar{
+    background: #2e2e2e;
+    /* background: linear-gradient(to left, #6ab04c, #7CEC9F, #6ab04c); */
+    box-sizing: border-box;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
