@@ -59,6 +59,7 @@ class SortingVisualizer extends Component {
   // @desc
   // HERE: Algorithm Handler
   sortingHandler = () => {
+    //   TODO: Will need a correction--such that algorithm can be dynamically selected
     this.animations = selectionSort(this.state.array);
     this.index = 0;
   };
@@ -89,6 +90,10 @@ class SortingVisualizer extends Component {
   };
 
   continueAnimation = () => {
+      if (this.animations == false){
+        //   TODO: Needs an alteration that the by default algo is preset
+        this.sortingHandler()
+      }
     this.setState({ animationPlayingStatus: true });
     this.animation_id = setInterval(() => {
       this.animationHandler(this.animations);

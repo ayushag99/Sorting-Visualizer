@@ -41,16 +41,16 @@ class Toolbar extends Component {
         </div>
 
         <div className={styles.ProgressBar}>
-          {this.props.totalLength}
-          <input
-            type="range"
-            min="0"
-            max={this.props.totalLength}
-            value={this.props.completedLength}
-          />
-          {this.props.completedLength}
+        {this.props.completedLength}
+        <input
+        type="range"
+        min="0"
+        max={this.props.totalLength}
+        value={this.props.completedLength}
+        />
+        {this.props.totalLength}
         </div>
-
+        
         <p>{this.props.array.join(" ")}</p>
       </div>
     );
