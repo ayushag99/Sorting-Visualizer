@@ -36,22 +36,21 @@ class Toolbar extends Component {
           </div>
 
           <div>
-            <button onClick={this.props.selection}>Selection Sort</button>
+            <button onClick={this.props.selection} style={{display:'none'}}disabled>Selection Sort</button>
           </div>
         </div>
 
         <div className={styles.ProgressBar}>
-        {this.props.completedLength}
+        <span className={styles.ProgressCount}>{this.props.completedLength}</span>
         <input
         type="range"
         min="0"
         max={this.props.totalLength}
         value={this.props.completedLength}
         />
-        {this.props.totalLength}
+        <span className={styles.TotalLength}>{this.props.totalLength}</span>
         </div>
         
-        <p>{this.props.array.join(" ")}</p>
       </div>
     );
   }

@@ -61,6 +61,7 @@ class SortingVisualizer extends Component {
   sortingHandler = () => {
     //   TODO: Will need a correction--such that algorithm can be dynamically selected
     this.animations = selectionSort(this.state.array);
+    this.animations.push({i:null,j:null,swap:null , arr:[...this.animations[this.animations.length -1].arr]})
     this.index = 0;
   };
 
@@ -69,12 +70,12 @@ class SortingVisualizer extends Component {
   animationHandler = (animations) => {
     if (animations.length === this.index) {
       this.pauseAnimation();
-      this.setState({
-        animation: { marker: { i: null, j: null }, swap: null },
-      });
+      this.index-=1
+    //   this.setState({
+    //     animation: { marker: { i: null, j: null }, swap: null },
+    //   });
       return;
     }
-    //   console.log(animations[0])
     this.setState({
       array: animations[this.index].arr,
       animation: {
@@ -99,6 +100,7 @@ class SortingVisualizer extends Component {
       this.animationHandler(this.animations);
       this.index += 1;
     }, this.animation_speed);
+
   };
 
   toggleAnimation = () => {
@@ -115,11 +117,11 @@ class SortingVisualizer extends Component {
     this.index -= 1;
   };
   rightShift = () => {
-    console.log("Right Shift");
     this.pauseAnimation();
     this.animationHandler(this.animations);
     this.index += 1;
   };
+
 
   // @desc
   // HERE: Render Function
