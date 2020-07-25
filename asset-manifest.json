@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Sorting-Visualizer/static/css/main.ef43e867.chunk.css",
-    "main.js": "/Sorting-Visualizer/static/js/main.32d82d8c.chunk.js",
-    "main.js.map": "/Sorting-Visualizer/static/js/main.32d82d8c.chunk.js.map",
+    "main.css": "/Sorting-Visualizer/static/css/main.711e1fef.chunk.css",
+    "main.js": "/Sorting-Visualizer/static/js/main.ceff0daf.chunk.js",
+    "main.js.map": "/Sorting-Visualizer/static/js/main.ceff0daf.chunk.js.map",
     "runtime-main.js": "/Sorting-Visualizer/static/js/runtime-main.57039737.js",
     "runtime-main.js.map": "/Sorting-Visualizer/static/js/runtime-main.57039737.js.map",
-    "static/js/2.44e29680.chunk.js": "/Sorting-Visualizer/static/js/2.44e29680.chunk.js",
-    "static/js/2.44e29680.chunk.js.map": "/Sorting-Visualizer/static/js/2.44e29680.chunk.js.map",
+    "static/js/2.2adb4231.chunk.js": "/Sorting-Visualizer/static/js/2.2adb4231.chunk.js",
+    "static/js/2.2adb4231.chunk.js.map": "/Sorting-Visualizer/static/js/2.2adb4231.chunk.js.map",
     "index.html": "/Sorting-Visualizer/index.html",
-    "precache-manifest.b67f64d2e90592f45c8a1b76048fd3b2.js": "/Sorting-Visualizer/precache-manifest.b67f64d2e90592f45c8a1b76048fd3b2.js",
+    "precache-manifest.400f1afea8041367a9153221ec5b5abe.js": "/Sorting-Visualizer/precache-manifest.400f1afea8041367a9153221ec5b5abe.js",
     "service-worker.js": "/Sorting-Visualizer/service-worker.js",
-    "static/css/main.ef43e867.chunk.css.map": "/Sorting-Visualizer/static/css/main.ef43e867.chunk.css.map",
-    "static/js/2.44e29680.chunk.js.LICENSE.txt": "/Sorting-Visualizer/static/js/2.44e29680.chunk.js.LICENSE.txt",
+    "static/css/main.711e1fef.chunk.css.map": "/Sorting-Visualizer/static/css/main.711e1fef.chunk.css.map",
+    "static/js/2.2adb4231.chunk.js.LICENSE.txt": "/Sorting-Visualizer/static/js/2.2adb4231.chunk.js.LICENSE.txt",
     "static/media/LeftShift.svg": "/Sorting-Visualizer/static/media/LeftShift.ed3cf220.svg",
     "static/media/Pause.svg": "/Sorting-Visualizer/static/media/Pause.69377113.svg",
     "static/media/Play.svg": "/Sorting-Visualizer/static/media/Play.d0c0a044.svg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.57039737.js",
-    "static/js/2.44e29680.chunk.js",
-    "static/css/main.ef43e867.chunk.css",
-    "static/js/main.32d82d8c.chunk.js"
+    "static/js/2.2adb4231.chunk.js",
+    "static/css/main.711e1fef.chunk.css",
+    "static/js/main.ceff0daf.chunk.js"
   ]
 }
