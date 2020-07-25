@@ -8,13 +8,12 @@ import Toolbar from "./Component/Toolbar/Toolbar";
 import Bars from "./Component/Bars/Bars";
 
 // Importing Algorithm Handler
-import selectionSort from "../Algorithms/SelectionSort/SelectionSort";
+import selectionSort from "../Algorithms/SelectionSort";
 
 class SortingVisualizer extends Component {
   animation_speed = 10;
   animations = [];
   index = 0;
-
   state = {
     array: [],
     animationPlayingStatus: false,
@@ -27,41 +26,50 @@ class SortingVisualizer extends Component {
   //   @desc
   // HERE: Lifecycle Management
   componentDidMount = () => {
-    this.generateRandomArray();
+    console.log("Mounted");
+    this.resetWithNewArray(20, 5, 50, () =>
+      this.animationInitializer(selectionSort)
+    );
   };
 
   //   @desc
-  //   HERE: Methods
-  resetAnimationWithNewArray = (array) => {
-    this.setState({
-      array: array,
-      animationPlayingStatus: false,
-      animation: {
-        marker: { i: null, j: null },
-        swap: null,
-      },
-    });
+  //   HERE: Reset with new array
+  resetWithNewArray = (len = 20, startRange = 5, endRange = 50, cb) => {
     this.index = 0;
-    this.animations=[]
+    this.animations = [];
+    this.setState(
+      {
+        array: this.generateRandomArray(len, startRange, endRange),
+        animationPlayingStatus: false,
+        animation: {
+          marker: { i: null, j: null },
+          swap: null,
+        },
+      },
+      cb
+    );
   };
-
   //   @desc
-  //   HERE: Generate Radom Array
-  generateRandomArray = (len = 20, startRange = 5, endRange = 50) => {
+  //   HERE: Generate Random Array
+  generateRandomArray = (len, startRange, endRange) => {
     //   Generating random array
-    this.pauseAnimation()
     let array = Array.from({ length: len }, () =>
       Math.floor(Math.random() * (endRange - startRange + 1) + startRange)
     );
-    this.resetAnimationWithNewArray(array);
+    return array;
   };
 
   // @desc
-  // HERE: Algorithm Handler
-  sortingHandler = () => {
+  // HERE: Initializes the animation
+  animationInitializer = (algo) => {
     //   TODO: Will need a correction--such that algorithm can be dynamically selected
-    this.animations = selectionSort(this.state.array);
-    this.animations.push({i:null,j:null,swap:null , arr:[...this.animations[this.animations.length -1].arr]})
+    this.animations = algo(this.state.array);
+    this.animations.push({
+      i: null,
+      j: null,
+      swap: null,
+      arr: this.animations[this.animations.length - 1].arr,
+    });
     this.index = 0;
   };
 
@@ -70,10 +78,7 @@ class SortingVisualizer extends Component {
   animationHandler = (animations) => {
     if (animations.length === this.index) {
       this.pauseAnimation();
-      this.index-=1
-    //   this.setState({
-    //     animation: { marker: { i: null, j: null }, swap: null },
-    //   });
+      this.index -= 1;
       return;
     }
     this.setState({
@@ -91,16 +96,15 @@ class SortingVisualizer extends Component {
   };
 
   continueAnimation = () => {
-      if (this.animations == false){
-        //   TODO: Needs an alteration that the by default algo is preset
-        this.sortingHandler()
-      }
+    if (this.animations == false) {
+      //   TODO: Needs an alteration that the by default algo is preset
+      this.animationInitializer(selectionSort);
+    }
     this.setState({ animationPlayingStatus: true });
     this.animation_id = setInterval(() => {
       this.animationHandler(this.animations);
       this.index += 1;
     }, this.animation_speed);
-
   };
 
   toggleAnimation = () => {
@@ -122,7 +126,6 @@ class SortingVisualizer extends Component {
     this.index += 1;
   };
 
-
   // @desc
   // HERE: Render Function
   render() {
@@ -131,11 +134,9 @@ class SortingVisualizer extends Component {
         <Bars array={this.state.array} animation={this.state.animation} />
 
         <Toolbar
-          arrayGeneration={this.generateRandomArray}
-          array={this.state.array}
+          arrayGeneration={this.resetWithNewArray}
           animationPlayingStatus={this.state.animationPlayingStatus}
           toggleAnimation={this.toggleAnimation}
-          selection={() => this.sortingHandler([...this.state.array])}
           leftShift={this.leftShift}
           rightShift={this.rightShift}
           totalLength={this.animations.length}

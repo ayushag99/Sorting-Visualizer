@@ -36,7 +36,7 @@ class Toolbar extends Component {
           </div>
 
           <div>
-            <button onClick={this.props.selection} style={{display:'none'}}disabled>Selection Sort</button>
+            
           </div>
         </div>
 
