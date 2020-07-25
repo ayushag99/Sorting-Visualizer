@@ -9,6 +9,7 @@ import Bars from "./Component/Bars/Bars";
 
 // Importing Algorithm Handler
 import selectionSort from "../Algorithms/SelectionSort";
+import bubbleSort from "../Algorithms/BubbleSort";
 
 class SortingVisualizer extends Component {
   animation_speed = 10;
@@ -125,6 +126,10 @@ class SortingVisualizer extends Component {
     this.animationHandler(this.animations);
     this.index += 1;
   };
+  progressUpdate=(e)=>{
+    console.log(e.target.value)
+
+  }
 
   // @desc
   // HERE: Render Function
@@ -141,6 +146,7 @@ class SortingVisualizer extends Component {
           rightShift={this.rightShift}
           totalLength={this.animations.length}
           completedLength={this.index}
+          progressBarUpdate={this.progressUpdate}
         />
       </div>
     );

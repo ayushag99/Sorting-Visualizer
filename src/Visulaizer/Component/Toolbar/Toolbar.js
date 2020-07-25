@@ -36,21 +36,28 @@ class Toolbar extends Component {
           </div>
 
           <div>
-            
+            <select name="" id="" >
+              <option value="">Selection Sort</option>
+              <option value="">Bubble Sort</option>
+            </select>
           </div>
         </div>
 
         <div className={styles.ProgressBar}>
-        <span className={styles.ProgressCount}>{this.props.completedLength}</span>
-        <input
-        type="range"
-        min="0"
-        max={this.props.totalLength}
-        value={this.props.completedLength}
-        />
-        <span className={styles.TotalLength}>{this.props.totalLength}</span>
+          <span className={styles.ProgressCount}>
+            {this.props.completedLength}
+          </span>
+          <input
+            type="range"
+            min="0"
+            onChange={(e) => {
+              this.props.progressBarUpdate(e);
+            }}
+            max={this.props.totalLength}
+            value={this.props.completedLength}
+          />
+          <span className={styles.TotalLength}>{this.props.totalLength}</span>
         </div>
-        
       </div>
     );
   }
