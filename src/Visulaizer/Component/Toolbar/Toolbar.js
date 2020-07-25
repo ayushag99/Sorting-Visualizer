@@ -36,9 +36,9 @@ class Toolbar extends Component {
           </div>
 
           <div>
-            <select name="" id="" >
-              <option value="">Selection Sort</option>
-              <option value="">Bubble Sort</option>
+            <select value={this.props.algorithm} onChange={this.props.updateAlgo} disabled={(this.props.completedLength===0)?false : true}>
+              <option value="selectSort">Selection Sort</option>
+              <option value="bubbleSort">Bubble Sort</option>
             </select>
           </div>
         </div>
@@ -50,11 +50,9 @@ class Toolbar extends Component {
           <input
             type="range"
             min="0"
-            onChange={(e) => {
-              this.props.progressBarUpdate(e);
-            }}
             max={this.props.totalLength}
             value={this.props.completedLength}
+            onChange={()=>{}}
           />
           <span className={styles.TotalLength}>{this.props.totalLength}</span>
         </div>

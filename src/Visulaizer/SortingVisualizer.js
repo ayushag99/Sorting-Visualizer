@@ -11,6 +11,11 @@ import Bars from "./Component/Bars/Bars";
 import selectionSort from "../Algorithms/SelectionSort";
 import bubbleSort from "../Algorithms/BubbleSort";
 
+const Algorithms = {
+  selectSort: selectionSort,
+  bubbleSort: bubbleSort,
+};
+
 class SortingVisualizer extends Component {
   animation_speed = 10;
   animations = [];
@@ -18,6 +23,7 @@ class SortingVisualizer extends Component {
   state = {
     array: [],
     animationPlayingStatus: false,
+    algo: "selectSort",
     animation: {
       marker: { i: null, j: null },
       swap: null,
@@ -27,10 +33,19 @@ class SortingVisualizer extends Component {
   //   @desc
   // HERE: Lifecycle Management
   componentDidMount = () => {
-    console.log("Mounted");
-    this.resetWithNewArray(20, 5, 50, () =>
-      this.animationInitializer(selectionSort)
-    );
+    // console.log("Mounted");
+    this.resetWithNewArray(20, 5, 50);
+  };
+  //   @desc
+  // HERE: Algorithm Update
+  updateAlgo = (e) => {
+    this.animations=[]
+    this.index = 0
+
+    this.setState({
+      algo:e.target.value
+    })
+
   };
 
   //   @desc
@@ -62,9 +77,9 @@ class SortingVisualizer extends Component {
 
   // @desc
   // HERE: Initializes the animation
-  animationInitializer = (algo) => {
+  animationInitializer = () => {
     //   TODO: Will need a correction--such that algorithm can be dynamically selected
-    this.animations = algo(this.state.array);
+    this.animations = Algorithms[this.state.algo](this.state.array);
     this.animations.push({
       i: null,
       j: null,
@@ -99,7 +114,7 @@ class SortingVisualizer extends Component {
   continueAnimation = () => {
     if (this.animations == false) {
       //   TODO: Needs an alteration that the by default algo is preset
-      this.animationInitializer(selectionSort);
+      this.animationInitializer();
     }
     this.setState({ animationPlayingStatus: true });
     this.animation_id = setInterval(() => {
@@ -117,19 +132,18 @@ class SortingVisualizer extends Component {
   };
 
   leftShift = () => {
+    if (this.index>0){
     this.pauseAnimation();
-    this.animationHandler(this.animations);
     this.index -= 1;
+    this.animationHandler(this.animations);
+  }
   };
   rightShift = () => {
+    if (this.index<this.animations.length){
     this.pauseAnimation();
     this.animationHandler(this.animations);
-    this.index += 1;
+    this.index += 1;}
   };
-  progressUpdate=(e)=>{
-    console.log(e.target.value)
-
-  }
 
   // @desc
   // HERE: Render Function
@@ -146,7 +160,8 @@ class SortingVisualizer extends Component {
           rightShift={this.rightShift}
           totalLength={this.animations.length}
           completedLength={this.index}
-          progressBarUpdate={this.progressUpdate}
+          updateAlgo={this.updateAlgo}
+          algorithm={this.state.algo}
         />
       </div>
     );
